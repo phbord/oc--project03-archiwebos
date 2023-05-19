@@ -125,6 +125,46 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+.filters-list,.filters-list li {
+	margin: 0;
+	padding: 0;
+}
+
+.filters-list {
+	margin-bottom: 50px;
+	display: flex;
+	justify-content: center;
+}
+.filters-list li {
+	list-style: none;
+}
+
+.btn-filter {
+	height: 37px;
+	margin: 0 5px;
+	padding: 0 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid #1D6154;
+	border-radius: 60px;
+	background-color: #fff;
+	color: #1D6154;
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 19px;
+	cursor: pointer;
+}
+
+.btn-filter:hover,
+.btn-filter--active {
+	background-color: #1D6154;
+	color: #fff;
+	cursor: pointer;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
