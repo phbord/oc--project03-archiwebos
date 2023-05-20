@@ -1,21 +1,34 @@
-const baseRoute = 'http://localhost:5678/api';
+import { fetchData } from "./requests.js";
 
-const fetchProjects = async () => {
-  const res = await fetch(`${baseRoute}/works`);
-  const data = await res.json();
 
-  data.forEach(row => {
-    const figure = document.createElement('figure');
-    const img = document.createElement('img');
-    const figcaption = document.createElement('figcaption');
+// Récupération des données des projets
+const __fetchWorks = async () => {
+  const data = await fetchData(`/works`);
 
-    img.setAttribute('src', row.imageUrl);
-    img.setAttribute('alt', row.title);
-    figcaption.textContent = row.title;
-    figure.appendChild(img);
-    figure.appendChild(figcaption);
-    document.getElementsByClassName('gallery')[0].append(figure);
-  })
-}
+  return data;
+};
 
-export { fetchProjects };
+// Affichage des boutons de la liste complète des projets
+const showProjects = async () => {
+  try {
+    const data = await __fetchWorks();
+
+    data.forEach(row => {
+      const figure = document.createElement('figure');
+      const img = document.createElement('img');
+      const figcaption = document.createElement('figcaption');
+
+      img.setAttribute('src', row.imageUrl);
+      img.setAttribute('alt', row.title);
+      figcaption.textContent = row.title;
+      figure.appendChild(img);
+      figure.appendChild(figcaption);
+      document.getElementsByClassName('gallery')[0].append(figure);
+    });
+  }
+  catch (error) {
+    console.error(`Error: ${error.message}`);
+  }
+};
+
+export { showProjects };
