@@ -8,7 +8,7 @@ const fetchData = async (route, category) => {
   console.log('data:',data);
   if (category) data = data.filter(item => item.category.name === category);
 
-  console.log(`Get complete: ${res.statusText}`);
+  console.log(`GET: ${res.statusText}`);
   return data;
 };
 
@@ -18,13 +18,12 @@ const sendData = async (route, data) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
-      //"Authorization": 'Bearer my-token',
     },
     body: JSON.stringify(data)
   });
-  let result = await res;//.json();
+  let result = await res.json();
 
-  console.log(`Post complete: ${res.status} ${res.statusText}`);
+  console.log(`POST: ${res.status} ${res.statusText}`);
   return result;
 }
 

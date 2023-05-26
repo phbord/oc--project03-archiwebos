@@ -12,15 +12,19 @@ const isConnected = async () => {
     const user = { email, password };
     const data = await sendData(`/users/login`, user);
 
-    if (data.status === 200) {
-      data.json();
+    if (data.token) {
+      // Masquage du message d'erreurs
       document.querySelector('.error-msg').classList.remove('d-block');
-      console.log('data: ', data);
+      // Gestion du localStorage
+      localStorage.removeItem('ArchiWebos');
+      localStorage.setItem('ArchiWebos', JSON.stringify(data.token));
+      // Redirection
       window.location.href = './index.html';
     }
     else {
+      console.error(`Error: ${data.message}`);
+      // Affichage du message d'erreurs du formulaire
       document.querySelector('.error-msg').classList.add('d-block');
-      console.error(`statut: ${data.status} ${data.statusText}`);
     }
   });
   
