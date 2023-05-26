@@ -12,4 +12,20 @@ const fetchData = async (route, category) => {
   return data;
 };
 
-export { fetchData };
+// POST
+const sendData = async (route, data) => {
+  let res = await fetch(`${baseRoute}${route}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+      //"Authorization": 'Bearer my-token',
+    },
+    body: JSON.stringify(data)
+  });
+  let result = await res;//.json();
+
+  console.log(`Post complete: ${res.status} ${res.statusText}`);
+  return result;
+}
+
+export { fetchData, sendData };
