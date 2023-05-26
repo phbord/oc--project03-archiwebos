@@ -252,6 +252,16 @@ input[type="submit"]:hover {
 	cursor: pointer;
 }
 
+.error-msg {
+	display: none;
+	margin-top: 1rem;
+	color: red;
+}
+
+.d-block {
+	display: block !important;
+}
+
 .link-form {
 	color: #3D3D3D;
 	font-family: 'Work Sans';

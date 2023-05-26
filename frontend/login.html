@@ -41,11 +41,12 @@
 	<section id="login">
 		<h2>Log In</h2>
 	  <!-- FORM -->
-		<form action="#" method="post">
-			<label for="input-login">E-mail</label>
-			<input type="text" name="input-login" id="input-login">
+		<form action="#" method="post" id="login-form">
+			<label for="input-email">E-mail</label>
+			<input type="text" name="input-email" id="input-email">
 			<label for="input-password">Mot de passe</label>
 			<input type="password" name="input-password" id="input-password">
+			<p class="error-msg">Erreur dans l’identifiant ou le mot de passe</p>
 			<input type="submit" value="Se connecter">
 		</form>
 		<p>
