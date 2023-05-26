@@ -29,8 +29,10 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 body {
-	min-height: calc(100vh - 50px);
 	line-height: 1;
+}
+.sub-body {
+	min-height: calc(100vh - 50px);
 }
 ol, ul {
 	list-style: none;
@@ -48,11 +50,30 @@ table {
 	border-spacing: 0;
 }
 /** end reset css**/
+.d-none {
+	display: none !important;
+}
+
+.d-block {
+	display: block !important;
+}
+
+.d-flex {
+	display: flex !important;
+}
+
+.d-list-item {
+	display: list-item !important;
+}
+
 body {
-	max-width: 1140px;
-	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+}
+
+.sub-body {
+	max-width: 1140px;
+	margin: auto;
 }
 
 header {
@@ -120,7 +141,8 @@ nav li a:hover {
 	flex: 1
 }
 
-#introduction img {
+#introduction img,
+#introduction .edit-figcaption {
 	display: block;
 	margin: auto;
 	width: 80%;
@@ -258,10 +280,6 @@ input[type="submit"]:hover {
 	color: red;
 }
 
-.d-block {
-	display: block !important;
-}
-
 .link-form {
 	color: #3D3D3D;
 	font-family: 'Work Sans';
@@ -277,3 +295,154 @@ footer nav ul {
 	margin: 2em
 }
 
+
+/* Bloc de publication */
+
+.edit-mode {
+	padding: 0 10px;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	background-color: #000;
+}
+
+.edit-mode .fa-regular {
+	color: #fff;
+	font-size: 20px;
+}
+
+.edit-mode__label {
+	margin: 10px;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 400;
+}
+
+.edit-mode__btn {
+	margin: 10px;
+	padding: 11.5px 22px;
+	border: 0;
+	border-radius: 17px;
+	background-color: #fff;
+	color: #000;
+	font-size: 16px;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.edit-mode__btn:hover {
+	background-color: #eee;
+}
+
+
+/* Bloc d'édition */
+
+#introduction .edit-figcaption {
+	margin-top: 12px;
+}
+
+.title-projects {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.title-projects .edit-btn {
+	margin-left: 30px;
+}
+
+.edit-btn {
+	display: none;
+	border: 0;
+	background-color: transparent;
+	color: #000;
+	font-size: 14px;
+	font-weight: 400;
+	cursor: pointer;
+}
+
+.edit-btn:hover {
+	color: #1D6154;
+}
+
+.edit-btn .fa-regular {
+	margin-right: 5px;
+	font-size: 16px;
+}
+
+
+/* Liens du Header */
+
+.item-logout {
+	display: none;
+}
+
+
+/* MODALE */
+
+.modal {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 10;
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-backdrop {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: -1;
+	background-color: rgba(0,0,0,.5);
+}
+
+.modal-wrapper {
+	width: calc(100% - 40px);
+	max-width: 630px;
+	max-height: calc(100% - 40px);
+	padding: 30px 30px 50px ;
+	border-radius: 10px;
+	background-color: #fff;
+}
+
+.modal-header {
+	margin: 0 0 15px;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row-reverse;
+}
+
+.modal-header button {
+	padding: 0;
+	border: 0;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+#btn-prev {
+}
+
+#btn-close {
+	font-size: 16px;
+}
+
+.modal .modal-step {
+	margin: 0;
+}
+
+.modal h2 {
+	margin: 0 0 40px;
+	font-family: 'Work Sans';
+	color: #000;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 26px;
+	line-height: 30px;
+	text-align: center;
+}

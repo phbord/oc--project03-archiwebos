@@ -8,7 +8,7 @@ const fetchData = async (route, category) => {
   console.log('data:',data);
   if (category) data = data.filter(item => item.category.name === category);
 
-  console.log(`GET: ${res.statusText}`);
+  console.log(`GET: ${res.status} ${res.statusText}`);
   return data;
 };
 

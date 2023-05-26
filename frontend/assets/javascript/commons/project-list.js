@@ -8,6 +8,7 @@ const __fetchWorks = async () => {
   return data;
 };
 
+
 // Affichage des boutons de la liste complète des projets
 const showProjects = async () => {
   try {
@@ -23,6 +24,7 @@ const showProjects = async () => {
       figcaption.textContent = row.title;
       figure.appendChild(img);
       figure.appendChild(figcaption);
+      // Ajout de l'item dans la page
       document.getElementsByClassName('gallery')[0].append(figure);
     });
   }
@@ -30,5 +32,6 @@ const showProjects = async () => {
     console.error(`Error: ${error.message}`);
   }
 };
+
 
 export { showProjects };
