@@ -68,6 +68,7 @@ const __handleFilterButtons = () => {
  });
 }
 
+
 // Affichage des boutons de filtrage et de la liste des projets filtrée par catégories
 const createFilterButtons = async () => {
   try {
@@ -92,5 +93,6 @@ const createFilterButtons = async () => {
     console.error(`Error: ${error.message}`);
   }
 };
+
 
 export { createFilterButtons };

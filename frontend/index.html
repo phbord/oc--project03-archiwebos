@@ -22,13 +22,42 @@
 					<i class="fa-solid fa-xmark"></i>
 				</button>
 				<button type="button" id="btn-prev" class="d-none">
-					<i class="fa-light fa-arrow-left"></i>
+					<i class="fa-sharp fa-solid fa-arrow-left"></i>
 				</button>
 			</header>
 
-			<!-- BODY -->
+			<!-- STEP 01 -->
 			<section class="modal-step" id="modal-step-1">
 				<h2>Galerie photo</h2>
+				<ul class="modal-picture-list"></ul>
+				<div class="modal-btn-group">
+					<button type="button" class="btn-send" id="btn-add-picture">Ajouter une photo</button>
+					<button type="button" class="btn-link">Supprimer la galerie</button>
+				</div>
+			</section>
+
+			<!-- STEP 02 -->
+			<section class="modal-step d-none" id="modal-step-2">
+				<h2>Ajout photo</h2>
+				<form action="" class="modal-form">
+					<!-- Input file -->
+					<label class="label-file" for="input-file">
+						<i class="fa-sharp fa-regular fa-image"></i>
+						<input type="file" name="input-file" id="input-file">
+						<span class="input-file-infos">jpg, png : 4mo max</span>
+					</label>
+					<fieldset class="fieldset">
+						<!-- Input text -->
+						<label for="input-text" class="label-input">Titre</label>
+						<input type="text" class="input-text" name="input-text" id="input-text">
+						<!-- Input text -->
+						<label for="select" class="label-input">Catégorie</label>
+						<select name="select" id="select" class="select"></select>
+					</fieldset>
+					<div class="modal-btn-group">
+						<button type="button" class="btn-send" id="btn-submit-modal" disabled>Valider</button>
+					</div>
+				</form>
 			</section>
 		</div>
 	</aside>
