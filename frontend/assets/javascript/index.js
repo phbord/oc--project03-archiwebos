@@ -1,7 +1,8 @@
-import { showProjects, showModalProjects } from "./commons/project-list.js";
-import { createFilterButtons } from "./commons/filter-project-list.js";
+import { showProjects, handlePublishNewList, showModalProjects } from "./commons/project-list.js";
+import { createFilterButtons, fetchCategoriesSelect } from "./commons/filter-project-list.js";
 import { toggleAllAdminBlocks, handleLogout, handleOpenModal, handleCloseModal, handlePrevNextStep } from "./commons/modal.js";
-import { handlePublishButton } from "./commons/publish.js";
+import { handleDeletePicture } from "./commons/delete-picture.js";
+import { handleCreatePicture } from "./commons/create-picture.js";
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,15 +12,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Affichage des images filtrées
   createFilterButtons();
-
-  // Déconnexion
-  handleLogout();
   
   // Affichage des blocs du mode Administrateur
   toggleAllAdminBlocks('edit-mode');
   toggleAllAdminBlocks('edit-btn');
   toggleAllAdminBlocks('item-logout');
   toggleAllAdminBlocks('item-login', 'd-none');
+
+  // Affichage de la liste de photos mise à jour
+  handlePublishNewList();
+
+  // Affichage des catégories de la liste déroulante de la modale
+  fetchCategoriesSelect();
 
   // Affichage/Masquage de la modale
   handleOpenModal();
@@ -31,6 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Affichage du bloc suivant
   handlePrevNextStep('btn-add-picture', 'modal-step-1', 'modal-step-2');
 
-  // Affichage des changements
-  handlePublishButton();
+  // Suppression d'une photo
+  handleDeletePicture();
+
+  // Ajout d'une photo
+  handleCreatePicture();
+
+  // Déconnexion
+  handleLogout();
 });

@@ -1,4 +1,4 @@
-import { sendData } from "./requests.js";
+import { sendData } from "../models/requests.js";
 
 
 const isConnected = async () => {

@@ -1,4 +1,4 @@
-import { fetchData } from "./requests.js";
+import { fetchData } from "../models/requests.js";
 
 
 // Récupération des données des projets
@@ -31,6 +31,19 @@ const showProjects = async () => {
   catch (error) {
     console.error(`Error: ${error.message}`);
   }
+};
+
+
+const handlePublishNewList = () => {
+  // SI le bouton n'existe pas
+  if (!document.querySelector('.edit-mode__btn') || !document.querySelector('.edit-mode') || !document.querySelector('.gallery')) return;
+
+  document.querySelector('.edit-mode__btn').addEventListener('click', () => {
+    // Suppression de la liste de photos
+    document.querySelector('.gallery').innerHTML = '';
+    // Affichage de la liste de photos mise à jour
+    showProjects();
+  });
 };
 
 
@@ -75,4 +88,4 @@ const showModalProjects = async () => {
 };
 
 
-export { showProjects, showModalProjects };
+export { showProjects, handlePublishNewList, showModalProjects };

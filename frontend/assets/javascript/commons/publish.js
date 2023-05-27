@@ -1,4 +1,0 @@
-const handlePublishButton = () => {};
-
-
-export { handlePublishButton };

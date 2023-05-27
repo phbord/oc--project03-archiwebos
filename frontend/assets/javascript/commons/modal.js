@@ -1,9 +1,15 @@
 const __closeModal = (btnId) => {
   document.querySelector(`#${btnId}`).addEventListener('click', () => {
+    // Masquage de la modale
     document.querySelector('#gallery-modal').classList.remove('d-flex');
-
     // Masquage du bouton précédent
     document.querySelector('#btn-prev') && document.querySelector('#btn-prev').classList.add('d-none');
+    // Vidage des champs du formulaire de la modale
+    document.querySelector(`#input-file`).value = '';
+    document.querySelector(`#input-text`).value = '';
+    document.querySelector(`#select`).value = '';
+    // Désactivation du bouton de soumission
+    document.querySelector(`#btn-submit-modal`).setAttribute('disabled', 'disabled');
     // Retour à l'étape 1
     document.querySelector('#modal-step-1').classList.remove('d-none');
     document.querySelector('#modal-step-2').classList.add('d-none');
@@ -57,7 +63,11 @@ const handleCloseModal = () => {
   // SI les blocs n'existent pas
   if (!document.querySelector('#btn-close') 
       || !document.querySelector('#gallery-modal') 
-      || document.querySelector('#gallery-modal').classList.contains('d-flex')) return;
+      || document.querySelector('#gallery-modal').classList.contains('d-flex')
+      || !document.querySelector(`#btn-submit-modal`)
+      || !document.querySelector(`#input-file`)
+      || !document.querySelector(`#input-text`)
+      || !document.querySelector(`#select`)) return;
 
   __closeModal('btn-close');
   __closeModal('gallery-modal__backdrop');
