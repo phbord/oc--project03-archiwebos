@@ -108,6 +108,7 @@ const fetchCategoriesSelect = async () => {
       const option = document.createElement('option');
       
       option.textContent = row.name;
+      option.setAttribute('value', row.name);
       document.querySelector('#select').appendChild(option);
     });
 

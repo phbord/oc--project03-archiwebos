@@ -47,7 +47,7 @@ const handlePublishNewList = () => {
 };
 
 
-// Affichage de la liste complète des photos
+// Affichage de la liste complète des photos dans la modale
 const showModalProjects = async () => {
   // SI le bloc n'existe pas
   if (!document.querySelector('.modal-picture-list')) return;
@@ -72,6 +72,7 @@ const showModalProjects = async () => {
       button.textContent = 'éditer';
       button.classList.add('modal-edit-btn');
       buttonDelete.classList.add('modal-delete-btn');
+      buttonDelete.setAttribute('data-id', row.id)
       buttonDelete.appendChild(i);
       figcaption.appendChild(button);
       figure.appendChild(img);

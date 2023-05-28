@@ -35,12 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // Affichage du bloc suivant
   handlePrevNextStep('btn-add-picture', 'modal-step-1', 'modal-step-2');
 
+  // Déconnexion
+  handleLogout();
+
   // Suppression d'une photo
   handleDeletePicture();
 
   // Ajout d'une photo
   handleCreatePicture();
-
-  // Déconnexion
-  handleLogout();
 });
