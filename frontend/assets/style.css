@@ -595,7 +595,6 @@ footer nav ul {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: #E8F1F6;
 }
 
 #input-file {
@@ -643,7 +642,28 @@ footer nav ul {
 	font-size: 60px;
 }
 
-.fieldset {
+.figure-input-file {
+	height: 183px;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	border: 0;
+	border-radius: 0;
+	background-color: transparent;
+}
+
+.img-input-file {
+	height: 100%;
+}
+
+.fieldset-top {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	background-color: #E8F1F6;
+}
+
+.fieldset-bottom {
 	margin: 14px 0 0;
 	display: flex;
 	flex-direction: column;

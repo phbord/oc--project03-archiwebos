@@ -36,6 +36,26 @@ const sendData = async (route, data) => {
   return result;
 }
 
+const sendNewData = async (route, data) => {
+  let res = await fetch(`${baseRoute}${route}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+      'Authorization': `Bearer ${localStorageApp}`,
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Credentials': true,
+    },
+    body: JSON.stringify(data)
+  });
+  let result = await res.json();
+
+  (res.status === 200 || res.status === 201)
+    ? console.log(`POST: ${res.status} ${res.statusText}`)
+    : console.error(`POST ERROR: ${res.status} ${res.statusText}`);
+
+  return result;
+}
+
 
 // DELETE
 const deleteData = async (route, data) => {
@@ -61,4 +81,4 @@ const deleteData = async (route, data) => {
 };
 
 
-export { fetchData, sendData, deleteData };
+export { fetchData, sendData, sendNewData, deleteData };

@@ -4,6 +4,10 @@ const __closeModal = (btnId) => {
     document.querySelector('#gallery-modal').classList.remove('d-flex');
     // Masquage du bouton précédent
     document.querySelector('#btn-prev') && document.querySelector('#btn-prev').classList.add('d-none');
+    // Masquage du label de l'input file
+    document.querySelector(`.label-file`).classList.add('d-flex');
+    // Affichage du bloc de l'image de l'input file
+    document.querySelector(`.figure-input-file`).classList.remove('d-flex');
     // Vidage des champs du formulaire de la modale
     document.querySelector(`#input-file`).value = '';
     document.querySelector(`#input-text`).value = '';
@@ -14,6 +18,14 @@ const __closeModal = (btnId) => {
     document.querySelector('#modal-step-1').classList.remove('d-none');
     document.querySelector('#modal-step-2').classList.add('d-none');
   });
+};
+
+// Affichage du fichier (photo) du champ "input file"
+const __showInputFile = () => {
+  // SI l'élément n'existe pas
+  if (!document.querySelector(`#input-file`)) return;
+
+  document.querySelector('#input-file').addEventListener('click', () => {})
 };
 
 
@@ -73,22 +85,6 @@ const handleCloseModal = () => {
   __closeModal('gallery-modal__backdrop');
 };
 
-// Etape précédente
-const handlePreviousStep = (btnId, stepOldId, stepNextId) => {
-  // SI les blocs n'existent pas
-  if (!document.querySelector(`#${btnId}`) 
-      || !document.querySelector(`#${stepOldId}`)
-      || !document.querySelector(`#${stepNextId}`)) return;
-
-  document.querySelector(`#${btnId}`).addEventListener('click', () => {
-    // Affichage/Masquage de blocs
-    document.querySelector(`#${stepOldId}`).classList.add('d-none');
-    document.querySelector(`#${stepNextId}`).classList.remove('d-none');
-
-    document.querySelector('#btn-prev') && document.querySelector('#btn-prev').classList.remove('d-none')
-  });
-};
-
 // Etape suivante ou précédente
 const handlePrevNextStep = (btnId, stepOldId, stepNextId) => {
   // SI les blocs "étapes" n'existent pas
@@ -108,6 +104,9 @@ const handlePrevNextStep = (btnId, stepOldId, stepNextId) => {
       btnId !== 'btn-prev' && prevBtn.classList.remove('d-none');
       btnId === 'btn-prev' && prevBtn.classList.add('d-none');
     }
+
+    // Affichage du fichier (photo) du champ "input file"
+    __showInputFile();
   });
 };
 
