@@ -1,4 +1,5 @@
 import { sendNewData } from "../models/requests.js"; 
+import { showProjects } from "./project-list.js";
 
 
 // Stockage de variables (id des photos)
@@ -20,7 +21,7 @@ const __toggleSubmitButton = () => {
 };
 
 // Validation de champs
-const __validateForm = () => {
+const validateForm = () => {
   // SI les éléments n'existent pas
   if (!document.querySelector('.modal-form') 
       || !document.querySelector(`#btn-submit-modal`)
@@ -81,14 +82,35 @@ const __validateForm = () => {
 
 // Ajout d'une photo
 const handleCreatePicture = () => {
-  // SI l'élément n'existe pas
-  if (!document.querySelector('#btn-submit-modal')) return;
+  // SI les éléments n'existent pas
+  if (!document.querySelector('#btn-submit-modal')
+      || !document.querySelector('#input-file')
+      || !document.querySelector('#input-text')
+      || !document.querySelector('#select')) return;
 
-  __validateForm();
-  document.querySelector(`.modal-form`).addEventListener('click', () => {
-    //
+  validateForm();
+
+  document.querySelector(`.modal-form`).addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const imageUrl = document.querySelector('#input-file')//.files[0].name;
+    const title = document.querySelector('#input-text').value;
+    const categoryId = parseInt(document.querySelector('#select').value);
+    const inputData = { title, imageUrl, categoryId };
+    const data = await sendNewData('/works', inputData);
+
+    if (data) {
+      console.log(`POST: ${data.message}`);
+      // Suppression de la liste de photos
+      document.querySelector('.gallery').innerHTML = '';
+      // Affichage de la liste de photos mise à jour
+      showProjects();
+    }
+    else {
+      console.error(`Error: ${data.message}`);
+    }
   });
 };
 
 
-export { handleCreatePicture };
+export { validateForm, handleCreatePicture };

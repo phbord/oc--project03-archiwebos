@@ -45,7 +45,12 @@ const sendNewData = async (route, data) => {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': true,
     },
-    body: JSON.stringify(data)
+    //body: JSON.stringify(data)
+    body: JSON.stringify({
+      title: data.title, 
+      imageUrl: data.imageUrl, 
+      categoryId: data.categoryId
+    })
   });
   let result = await res.json();
 

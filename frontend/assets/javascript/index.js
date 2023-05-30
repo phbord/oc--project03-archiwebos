@@ -2,7 +2,7 @@ import { showProjects, handlePublishNewList, showModalProjects } from "./commons
 import { createFilterButtons, fetchCategoriesSelect } from "./commons/filter-project-list.js";
 import { toggleAllAdminBlocks, handleLogout, handleOpenModal, handleCloseModal, handlePrevNextStep } from "./commons/modal.js";
 import { handleDeletePicture } from "./commons/delete-picture.js";
-import { handleCreatePicture } from "./commons/create-picture.js";
+import {  handleCreatePicture } from "./commons/create-picture.js";
 
 
 document.addEventListener('DOMContentLoaded', () => {
