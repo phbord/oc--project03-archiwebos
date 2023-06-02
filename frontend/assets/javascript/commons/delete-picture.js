@@ -1,4 +1,5 @@
 import { deleteData } from "../models/requests.js";
+import { reloadNewList } from "./project-list.js";
 
 
 // Suppression d'une photo
@@ -9,16 +10,21 @@ const handleDeletePicture = () => {
     
     document.querySelectorAll('.modal-delete-btn').forEach(btn => {
       btn.addEventListener('click', async (e) => {
+        e.preventDefault();
+
         // Stockage de l'ID d'une photo dans le State
         const id = e.target.closest('.modal-delete-btn').getAttribute('data-id');
 
         // Suppression d'une photo
         try {
           const data = await deleteData(`/works/`, id);
+          reloadNewList();
+          handleDeletePicture();
         }
         catch (error) {
           console.error(`Error: ${error.message}`);
         }
+        return;
       });
     });
   }, 500);
