@@ -34,15 +34,22 @@ const showProjects = async () => {
 };
 
 
+const reloadNewList = () => {
+  // Suppression de la liste de photos
+  document.querySelector('.gallery').innerHTML = '';
+  document.querySelector('.modal-picture-list').innerHTML = '';
+  // Affichage de la liste de photos mise à jour
+  showProjects();
+  showModalProjects();
+}
+
+
 const handlePublishNewList = () => {
   // SI le bouton n'existe pas
   if (!document.querySelector('.edit-mode__btn') || !document.querySelector('.edit-mode') || !document.querySelector('.gallery')) return;
 
   document.querySelector('.edit-mode__btn').addEventListener('click', () => {
-    // Suppression de la liste de photos
-    document.querySelector('.gallery').innerHTML = '';
-    // Affichage de la liste de photos mise à jour
-    showProjects();
+    reloadNewList();
   });
 };
 
@@ -89,4 +96,4 @@ const showModalProjects = async () => {
 };
 
 
-export { showProjects, handlePublishNewList, showModalProjects };
+export { showProjects, handlePublishNewList, showModalProjects, reloadNewList };

@@ -1,5 +1,5 @@
-import { sendNewData } from "../models/requests.js"; 
-import { showProjects } from "./project-list.js";
+import { sendNewData } from "../models/requests.js";
+import { reloadNewList } from "./project-list.js";
 
 
 // Stockage de variables (id des photos)
@@ -20,8 +20,8 @@ const __toggleSubmitButton = () => {
     : modalElt.setAttribute('disabled', 'disabled');
 };
 
-// Validation de champs
-const validateForm = () => {
+// VALIDATION des champs
+const __validateForm = () => {
   // SI les éléments n'existent pas
   if (!document.querySelector('.modal-form') 
       || !document.querySelector(`#btn-submit-modal`)
@@ -80,37 +80,30 @@ const validateForm = () => {
 };
 
 
-// Ajout d'une photo
+// AJOUT d'une photo
 const handleCreatePicture = () => {
   // SI les éléments n'existent pas
   if (!document.querySelector('#btn-submit-modal')
+      || !document.querySelector('#modal-form')
       || !document.querySelector('#input-file')
       || !document.querySelector('#input-text')
       || !document.querySelector('#select')) return;
 
-  validateForm();
+  __validateForm();
 
-  document.querySelector(`.modal-form`).addEventListener('submit', async (e) => {
+  document.querySelector(`#modal-form`).addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const imageUrl = document.querySelector('#input-file')//.files[0].name;
+    const imageFile = document.querySelector('#input-file').files[0];
     const title = document.querySelector('#input-text').value;
     const categoryId = parseInt(document.querySelector('#select').value);
-    const inputData = { title, imageUrl, categoryId };
+    const inputData = { title, imageFile, categoryId };
     const data = await sendNewData('/works', inputData);
 
-    if (data) {
-      console.log(`POST: ${data.message}`);
-      // Suppression de la liste de photos
-      document.querySelector('.gallery').innerHTML = '';
-      // Affichage de la liste de photos mise à jour
-      showProjects();
-    }
-    else {
-      console.error(`Error: ${data.message}`);
-    }
+    data ? reloadNewList() : console.error(`Error: ${data.message}`);
+    return;
   });
 };
 
 
-export { validateForm, handleCreatePicture };
+export { handleCreatePicture };
