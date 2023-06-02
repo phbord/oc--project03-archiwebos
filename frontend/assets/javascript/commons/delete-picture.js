@@ -2,7 +2,9 @@ import { deleteData } from "../models/requests.js";
 import { reloadNewList } from "./project-list.js";
 
 
-// Suppression d'une photo
+// //////////////////////////
+// SUPPRESSION D'UNE PHOTO //
+// //////////////////////////
 const handleDeletePicture = () => {
   window.setTimeout(() => {
     // SI le bloc n'existe pas
