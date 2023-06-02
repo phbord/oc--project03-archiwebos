@@ -1,4 +1,4 @@
-import { fetchData } from "./requests.js";
+import { fetchData } from "../models/requests.js";
 
 
 // Récupération des données des projets
@@ -68,6 +68,7 @@ const __handleFilterButtons = () => {
  });
 }
 
+
 // Affichage des boutons de filtrage et de la liste des projets filtrée par catégories
 const createFilterButtons = async () => {
   try {
@@ -93,4 +94,30 @@ const createFilterButtons = async () => {
   }
 };
 
-export { createFilterButtons };
+
+// Affichage des catégories de la liste déroulante de la modale
+const fetchCategoriesSelect = async () => {
+  // SI l'élément n'existe pas
+  if (!document.querySelector('#select')) return;
+
+  try {
+    const data = await __fetchCategories();
+
+    // Création et ajout des boutons de filtrage
+    data.forEach(row => {
+      const option = document.createElement('option');
+      
+      option.textContent = row.name;
+      option.setAttribute('value', row.id);
+      document.querySelector('#select').appendChild(option);
+    });
+
+    __handleFilterButtons();
+  }
+  catch (error) {
+    console.error(`Error: ${error.message}`);
+  }
+};
+
+
+export { createFilterButtons, fetchCategoriesSelect };
