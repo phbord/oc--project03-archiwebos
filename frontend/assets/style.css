@@ -454,6 +454,8 @@ footer nav ul {
 }
 
 .modal-picture-list {
+	max-height: 294px;
+	overflow-y: auto;
 	margin: 0;
 	padding: 0;
 	display: flex;

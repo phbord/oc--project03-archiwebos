@@ -1,5 +1,6 @@
 import { sendNewData } from "../models/requests.js";
 import { reloadNewList } from "./project-list.js";
+import { closeModalBase } from "./modal.js";
 
 
 // Stockage de variables (id des photos)
@@ -79,8 +80,9 @@ const __validateForm = () => {
   });
 };
 
-
-// AJOUT d'une photo
+// ////////////////////
+// AJOUT D'UNE PHOTO //
+// ////////////////////
 const handleCreatePicture = () => {
   // SI les éléments n'existent pas
   if (!document.querySelector('#btn-submit-modal')
@@ -101,6 +103,7 @@ const handleCreatePicture = () => {
     const data = await sendNewData('/works', inputData);
 
     data ? reloadNewList() : console.error(`Error: ${data.message}`);
+    data && closeModalBase();
     return;
   });
 };

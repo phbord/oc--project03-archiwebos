@@ -1,4 +1,5 @@
 import { fetchData } from "../models/requests.js";
+import { handleDeletePicture } from "./delete-picture.js";
 
 
 // Récupération des données des projets
@@ -34,6 +35,7 @@ const showProjects = async () => {
 };
 
 
+// Création des nouvelles listes de photos
 const reloadNewList = () => {
   // Suppression de la liste de photos
   document.querySelector('.gallery').innerHTML = '';
@@ -41,6 +43,7 @@ const reloadNewList = () => {
   // Affichage de la liste de photos mise à jour
   showProjects();
   showModalProjects();
+  handleDeletePicture();
 }
 
 
